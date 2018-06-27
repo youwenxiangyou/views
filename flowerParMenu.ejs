@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>鲜花详情-猜你喜欢</title>
+    <link rel="stylesheet" href="">
+    <link href="../src/public/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../src/public/css/font/iconfont.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../src/public/css/flowerPar.css">
+</head>
+<body>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+        <% for(var i=data[i].f_id;i<=3;i++){ %>
+        <h4>猜你喜欢</h4>
+        <hr>
+        <div>
+            <a href="#">
+                <img src="./images/img/<%= data[(i+1)].f_url %>" alt="">
+            </a>
+            <h5><%= data[(i+1)].f_pk %></h5>
+            <h6><%= data[(i+1)].f_word %></h6>
+            <h6>￥<%= data[(i+1)].f_p %></h6>
+        </div>
+        <% } %>
+    </div>
+
+<script src="../src/public/JavaScript/jquery-3.2.1.js"></script>
+<script src="../src/public/bootstrap/js/bootstrap.js"></script>
+<script src="../src/public/JavaScript/js.js"></script>
+    <script>
+        window.onload=function(){
+            let xhr;
+            if(window.XMLHttpRequest){
+                xhr=new XMLHttpRequest()
+            }else if(window.ActiveXObject){
+                xhr=new ActiveXObject("Microsoft.XMLHTTP")
+            }
+            xhr.open("get","parMenu.do",true);
+            xhr.onreadystatechange=function(){
+                let data=xhr.responseText;
+                if(data=="1"){
+                    alert(data)
+                }
+            }
+            xhr.send(null);
+            console.log(send())
+        }
+    </script>
+</body>
+</html>
